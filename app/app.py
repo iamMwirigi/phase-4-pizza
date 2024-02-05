@@ -7,6 +7,7 @@ from models import db, Restaurant, Pizza, RestaurantPizza
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.json_encoder.compact = False
 
 api = Api(app)
@@ -304,4 +305,4 @@ api.add_resource(PizzaResource, '/pizzas', '/pizzas/<int:id>')
 api.add_resource(RestaurantPizzaResource, '/restaurant_pizzas', '/restaurant_pizzas/<int:id>')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5555, debug=True)
